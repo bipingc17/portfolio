@@ -1,0 +1,58 @@
+Array
+    - Collection of data 
+                any data type 
+    - index-value pair 
+        index is default and always starts from 9
+    - 2 ways to assign array 
+        [], new Array()
+    - every elements are comma separated 
+
+
+    Single Dimensional Array 
+        - array elements or object 
+
+
+Requirement: Nodejs
+
+- Object 
+    - 4 pillars OOP 
+        - Abstraction 
+            - extraction, getting information, creating a vague data format 
+        - Encapsulation 
+            - capsule
+        - Inheritance
+            - Reusability  
+        - Polymorphism
+            - poly, morph
+
+- prototype based 
+- class based 
+
+// 0 1 2 3 4 5 6 7 8 9
+// 0 1 2 3
+    // 0 1 2 3 4 
+let result = [...first, ...second]
+// 0 1 2 3 4 5 6 7 8 9 10
+array[4] = newItem
+
+// Version Controlling 
+    - project / Source code 
+
+    - git (Freemium)
+        - github
+        - gitlab 
+        - bitbucket
+
+/// Git 
+
+Online Repo(github) ----> Group/team/user
+Local repo (machine) ===== Push operation ======> Online Repo ====== Pull operation =======> User Local Machine 
+
+
+// Local repo 
+// Fresh Start 
+// Already Started
+
+// Git repo
+// Already Started 
+// empty repo

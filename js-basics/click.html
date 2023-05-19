@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>
+        <span id="name">....</span>
+        <span id="count">0</span>
+    </p>
+
+    <div>
+        <button id="nameBtn" onclick="getName()">
+            Enter your name
+        </button>
+        <button id="clickBtn" onclick="startGame()" disabled="disabled">
+            <span id="clickBtnTxt">Start Game</span>
+        </button>
+    </div>
+
+    <br/>
+
+    <table border="1" cellspacing="0" cellPadding="1" width="25%">
+        <thead>
+            <th>S.N</th>
+            <th>Name</th>
+            <th>Click Count</th>
+        </thead>
+        <tbody id="displayTxt">
+        
+        </tbody>
+    </table>
+
+    <script src="./click.js"></script>
+</body>
+</html>
