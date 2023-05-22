@@ -1,0 +1,23 @@
+[
+    {
+        "name": "User One",
+        "email": "userone@gmail.com",
+        "password": "userone123",
+        "role": "student",
+        "address": "kathmandu"
+    },
+    {
+        "name": "User Two",
+        "email": "usertwo@gmail.com",
+        "password": "usertwo123",
+        "role": "student",
+        "address": "kathmandu"
+    },
+    {
+        "name": "User Three",
+        "email": "userthree@gmail.com",
+        "password": "userThree123",
+        "role": "admin",
+        "address": "kathmandu"
+    }
+]

@@ -57,3 +57,36 @@ Local repo (machine) ===== Push operation ======> Online Repo ====== Pull operat
 // empty repo
 
 // This is the line to test versiioning
+
+
+Node js 
+    - API 
+        -> Application Programming Interface
+
+        js, php, java, .net, python
+
+        - nodejs 
+            -> expressjs
+                -> nestjs
+
+    - API 
+        -> Architecture 
+
+
+
+Incoming data ====> Request 
+Returns from a server ====> Response 
+
+Packages 
+    => npm 
+
+    Version => upgrade.update.patch
+ 
+
+ ^  ===> locks for the latest build 
+ ~  ===> locks Nearest Stable Version 
+ none => Locks for the used version 
+
+ // fs => File system 
+ 
+ // http
