@@ -25,7 +25,16 @@ let users = [
     },
 ]
 
-let filePath = "./files/user.json"
+let filePath = "./uploads/files/";
+
+// filder exists 
+if(!fs.existsSync(filePath)){
+    fs.mkdirSync(filePath, {recursive: true})
+}
+
+filePath+= "user.json";
+// ./uploads/files/user.json
+
 // 
 // open file 
 // write in file 
@@ -49,19 +58,30 @@ let filePath = "./files/user.json"
 //     }
 // })
 let data = JSON.stringify(users);   // array => json string 
-
-// console.log(fs.writeFileSync(filePath, data))
-
+fs.writeFileSync(filePath, data)
 
 let readFile = fs.readFileSync(filePath,{encoding: "utf8"});
 let userArray = JSON.parse(readFile);
 
-let userToAppend = {
+let userToAppend = [{
     name: "User Four",
     email: "userfour@gmail.com",
     password: "userfour123",
     role: "admin",
     address: "kathmandu"
-}
+},
+{
+    name: "User Five",
+    email: "userfive@gmail.com",
+    password: "userfive123",
+    role: "admin",
+    address: "kathmandu"
+},
+]
+userArray.push(userToAppend);
+fs.writeFileSync(filePath, JSON.stringify(userArray));
 
+
+readFile = fs.readFileSync(filePath,{encoding: "utf8"});
+userArray = JSON.parse(readFile);
 console.log(userArray)

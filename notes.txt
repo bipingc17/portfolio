@@ -90,3 +90,18 @@ Packages
  // fs => File system 
  
  // http
+
+API 
+    -> node http module => express application load 
+
+    -> express server instance create
+
+
+http    ==> 80
+
+0-2^16-1
+
+ftp => 21, sftp => 21, 22
+SMTP, IMAP, POP3 => 25, 2525, 465, 587
+
+https   ==> 443
