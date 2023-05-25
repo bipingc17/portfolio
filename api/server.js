@@ -1,10 +1,12 @@
 const http = require("http");
 const express = require("express")
 const app = express();
+const routes = require('./src/routes');
 
-app.get('/', (req, res) =>{
-    res.end("Hello World")
-})
+// /
+
+app.use("/api/v1", routes)
+
 
 const server = http.createServer(app);
 
