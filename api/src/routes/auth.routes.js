@@ -1,39 +1,27 @@
-const express = require("express");
-const app = express();
-// => http://localhost:3005/api/v1/banner -> get (list all banner)
-// => http://localhost:3005/api/v1/banner/create -> post (create a banner)
-// => http://localhost:3005/api/v1/banner/update -> put (update a banner)
-// => http://localhost:3005/api/v1/banner/delete -> delete (Delete a banner)
-// => http://localhost:3005/api/v1/banner/active -> get (Get active a banner)
+const app = require("express").Router()
+const authCheck = require("../middleware/auth.middleware");
+const uploader = require("../middleware/uploader.middleware");
 
-// http://localhost:3005/api/v1/auth/login
-app.post('/login', (req, res) => {
-    // TODO: Login logic 
-});
+const authCtrl = require("../controllers/auth.controller")
 
-// http://localhost:3005/api/v1/auth/register
-app.post('/register', (req, res) => {
-    // TODO: Register a user
-})
 
-// http://localhost:3005/api/v1/auth/activate
-app.post('/activate', (req, res) => {
-    // TODO: Activate a user
-})
+app.post('/login', authCtrl.login);
 
-// http://localhost:3005/api/v1/auth/forget-password
-app.post('/forget-password', (req, res) => {
-    // TODO: Send Password reset link to a user
-})
+// if file is not uploaded but content type is multpart/form-data -> use .none() function
+// if single file is uploaded, use .single("filedName") function
+// if multiple file is uploaded, use .array("fieldname", options) functions
 
-// http://localhost:3005/api/v1/auth/password-reset
-app.post('/password-reset', (req, res) => {
-    // TODO: Reset the password of a user
-})
+// Task: 1 make dynamic folder to upload in uploader middleware
+// /public/filename.ext
+// /public/user/userfilename.ext
+// /public/banner/bannerfilename.ext
+// /public/product/productfilename.ext
 
-// http://localhost:3005/api/v1/auth/me
-app.get('/me', (req, res) => {
-    // TODO: Get logged in user profile
-})
+app.post('/register', uploader.single('image'),  authCtrl.register)
+
+app.post('/activate/:token', authCtrl.activateUser)
+app.post('/forget-password', authCtrl.forgetPassword)
+app.post('/password-reset', authCtrl.resetPassword)
+app.get('/me',authCheck, authCtrl.getLoggedInUser)
 
 module.exports = app;

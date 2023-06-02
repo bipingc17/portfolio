@@ -1,0 +1,31 @@
+const multer = require("multer");
+const myStorage = multer.diskStorage({
+    destination: (req, file, cb)=>{
+        let path = "./public/";
+        cb(null, path);
+    },
+    filename: (req, file, cb) => {
+        let ext = (file.originalname.split('.')).pop();
+        let filename = Date.now()+"."+ext;
+        cb(null, filename);
+    }
+});
+const imageFilter = (req, file, cb) => {
+    let ext = (file.originalname.split(".")).pop()  // png => PNG
+
+    let allowed = ["jpg",'jpeg','png','gif','svg','bmp','webp'];
+    if(allowed.includes(ext.toLowerCase())) {
+        cb(false, true)
+    } else {
+        cb({status: 400, msg: "Image not supported"})
+    }
+}
+
+const uploader = multer({
+    storage: myStorage,
+    fileFilter: imageFilter,
+    limits: {
+        fileSize: 5000000
+    }
+})
+module.exports = uploader;

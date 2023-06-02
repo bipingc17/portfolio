@@ -65,3 +65,39 @@ active
 => http://localhost:3005/api/v1/banner/update -> put (update a banner)
 => http://localhost:3005/api/v1/banner/delete -> delete (Delete a banner)
 => http://localhost:3005/api/v1/banner/active -> get (Get active a banner)
+
+// Express Middleware 
+    => at least 3 param, 
+        (req, res, next) => next is a callback which trigers the next Middleware call
+a. Application level Middleware - .use(mount)
+b. Routing level Middleware 
+c. Error handling Middleware (garbage Collector)
+d. Third Party Middleware 
+3. Custom Middleware
+
+400 => Bad Request 
+    => Login APi 
+        => email -> text, password
+
+        res.status(400).json()
+
+401 => Unauthenticated/Unauthorized
+    => product/create 
+        => login required
+            -> no login info provided
+
+            res.status(401).json()
+
+403 => Forbidden 
+    => you do not have access right
+
+404 => Not found 
+    => 
+
+405 => Method not allowed
+
+422 => Unprocessable Entity/Content
+    => Login Api => email, password
+    => Payload 
+        -> username, password
+        res.status(422).json()
