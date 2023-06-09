@@ -101,3 +101,112 @@ d. Third Party Middleware
     => Payload 
         -> username, password
         res.status(422).json()
+
+SMTP Server
+    smtp => 25 
+    imap, pop3 => 
+
+Application Email 
+    app server
+    http(3005)  ======>   smtp(25 or custom) ======> network 
+    127.0.0.1
+
+
+CRUD  
+    => Create
+        ** Single row insert => db.collectionName.insertOne(object)
+        ** Multi- Row insert => db.collectionName.insertMany([objects])
+        -> After success, returns an acknowledgement 
+            _id key assign ObjectId -> Unique -> Behaves as a primary key
+            - {acknowledged: true, insertedId: ObjectId(<recently CreatedId>)}
+    => Read 
+        ** Single Row Read 
+            => db.collectionName.findOne(filter, projection);
+        ** Multi Row Read 
+            => db.collectionName.find(filter, projection)
+
+            $or, $and, $gt, $gte, $lt, $lte, $eq, $in, $nin, $ne
+
+            where filter is an object to query the value in db
+            {
+                column: value,
+                column1: value
+            }
+            // column = 'value' and column1 = 'value'
+
+            {
+                column: {$operator: value}
+            }
+            // users => age > 16
+            {
+                age: {$gt: 16}
+            }
+            // age > 16
+
+
+            {
+                $or: {
+                    key: value,
+                    key: value
+                }
+            }
+
+            projection: {column: 1 or 0}
+    => Update 
+        ** Single row Update 
+            db.collectionName.updateOne(filter, {$set: data})
+        ** Miultiple Row update
+            db.collectionName.updateMany(filter, {$set: data})
+    => Delete 
+        ** Single Row Delete 
+            db.collectionName.deleteOne(filter)
+        ** Delete Multi Row 
+            db.collectionName.deleteMany(filter)
+            
+    [
+        {
+            "name": "User One", 
+            "email": "userOne@broadwayinfosys.com", 
+            "password": "userone123", 
+            "role": "user", 
+            "address": "Kathmandu",
+            "status": "active" 
+        }, 
+        {
+            "name": "User Two", 
+            "email": "userTwo@broadwayinfosys.com", 
+            "password": "usertwo123", 
+            "role": "user", 
+            "address": "Kathmandu",
+            "status": "inactive" 
+        }
+    ]
+
+Create a collection named: products.
+a. Insert Atleast 10 products with, name, price, discount, brand, category 
+b. Fetch all the products with name, price and discount value 
+c. Fetch all the products with if disocunt > 0
+
+[
+    {
+        name: "Product One",
+        price: 1000, 
+        discount: 10,
+        brand: "apple",
+        category: "phone"
+    },
+    {
+        name: "Product Two",
+        price: 1000, 
+        discount: 0,
+        brand: "samsung",
+        category: "phone"
+    }
+]
+
+
+mongodb core driver 
+
+ODM / ORM 
+mongoose 
+sequelize 
