@@ -210,3 +210,31 @@ mongodb core driver
 ODM / ORM 
 mongoose 
 sequelize 
+
+DDD  
+    Design Driven Development
+TDD 
+    Test Driven Development 
+BDD
+    Behavioural Design Devlopment
+
+Natrue 
+Data indentify 
+    -> Ecommerce 
+        - user 
+            - name, 
+            email 
+            password
+            phone 
+
+        - role 
+        - permission 
+
+        daraz.com, hamrobazar, sastodeal
+        
+        - brand
+        - category
+        - Product
+        - banners 
+        - Order 
+        - transactions 

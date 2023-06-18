@@ -77,7 +77,8 @@ class AuthController {
             registerData.token = helpers.generateRandomString();
             
             let registerResponse = await userSvc.registerUser(registerData);
-            if(registerResponse.acknowledged){
+            
+            if(registerResponse){
                 let mailMsg = `Dear ${registerData.name},<br/>Your account has been registered 
                     successfully. Please click the link below or copy paste the url to activate your account: 
                     <a href="${process.env.FRONTEND_URL}activate/${registerData.token}">${process.env.FRONTEND_URL}activate/${registerData.token}</a>

@@ -1,32 +1,21 @@
-const express = require('express')
-const app = express()
+const router = require('express').Router()
+const { brandCtrl } = require('../controllers');
+const authCheck = require("../middleware/auth.middleware");
+const { checkPermission } = require('../middleware/permission.middleware');
+const uploader = require('../middleware/uploader.middleware');
 
-app.get("/", (req, res) => {
-    // TODO: To list all the brands
-})
 
-app.post("/create", (req, res) => {
-    // TODO: To create a brand
-})
+const uploadPath = (req, res, next) => {
+    req.uploadPath = "./public/brands/";
+    next()
+}
 
-// http://localhost:3005/api/v1/brand/:id
-app.put("/:id", (req, res) => {
-    // TODO: To update a brand
-})
-
-app.delete("/:id", (req, res) => {
-    // TODO: To delete a brand
-})
-
-//http://localhost:3005/api/v1/brand/slug
-// req.params.id => "1"
-app.get("/:id", (req, res) => {
-    // TODO: To get a detail of some data
-})
-
-//http://localhost:3005/api/v1/brand/active/by-status
-// req.params.status = "active"
-app.get("/:status/by-status", (req, res) => {
-    // TODO: List all active brands
-})
-module.exports = app;
+router.route("/")
+    .get(authCheck, checkPermission('admin'), brandCtrl.listAllBrands)
+    .post(authCheck,checkPermission("admin"),uploadPath,uploader.single('image'), brandCtrl.storeBrand)
+router.route("/:id")
+    .put(authCheck,checkPermission("admin"),uploadPath,uploader.single('image'), brandCtrl.updateBrand)
+    .delete(authCheck, checkPermission("admin"), brandCtrl.deleteBrand)
+    
+router.get("/list/home", brandCtrl.getBrandForHomePage)
+module.exports = router;

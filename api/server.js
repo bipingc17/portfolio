@@ -1,6 +1,9 @@
 const http = require("http");
 const express = require("express")
+require("./src/config/mongoose.config")
+
 const app = express();
+
 const routes = require('./src/routes');
 
 // csv 
