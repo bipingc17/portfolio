@@ -138,4 +138,3 @@ online resoure
 
 git setup
 
-This is change from "Desktop/mern-20"
