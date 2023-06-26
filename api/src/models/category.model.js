@@ -2,6 +2,8 @@ const mongoose = require("mongoose")
 // SmartPhone -> Parent Category => 1 parent -=> null
 // Android => child of Smartphone => parent -> 1, 2
 // Smasung Phne => child of Androidn => parent-2, 3
+// electronics ==> parent: null, _id: 123123123
+// Television => parent: 123123123
 const CategorySchema = new mongoose.Schema({
     name: {
         type: String,

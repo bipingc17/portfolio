@@ -105,3 +105,35 @@ ftp => 21, sftp => 21, 22
 SMTP, IMAP, POP3 => 25, 2525, 465, 587
 
 https   ==> 443
+
+
+BE - FE 
+React 
+    - 2011 
+        js, native
+
+- Execution 
+- DOM Manipulation 
+- Perfomance 
+
+Pre Requisists
+    - HTML/CSS/JS 
+    - DOM Concept
+    - React js
+
+
+    nodejs 
+        package.json 
+
+
+Push ===> 
+Pull <===
+
+
+online resoure 
+    - github,
+
+    - gitlab 
+    - bitbucket
+
+git setup
