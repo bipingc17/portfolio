@@ -1,0 +1,36 @@
+body{
+    margin: 0;
+}
+div{
+    background-color: #cccccc;
+    margin-bottom: 10px;
+}
+.w-half{
+    width: 50%;
+}
+.left{
+    float: left;
+}
+.right{
+    float: right;
+}
+#left-first{
+    font-weight: bold;
+    padding: 30px;
+}
+.header{
+    height: 100px;
+    background-color: #000000;
+}
+header .top-header{
+    
+}
+.logo-wrapper{
+
+}
+
+@media (min-width <= 376){
+    .header{
+        display: none;
+    }
+}

@@ -1,0 +1,34 @@
+-> UI/UX 
+    => Library 
+
+    -> Virutal DOM 
+    -> Client Side 
+
+
+Component 
+    url => Page 
+        same url reusable codes => component
+
+
+    Class based component       => Stateful component  
+    Function based component    => Stateless Component 
+
+A component stroes two types of data: 
+    a. Incoming data            => Props
+    b. Self Data                => State
+
+props 
+    => incoming data to a component
+    => They are readonly data
+
+https://ekantipur.com
+    /news/2023/07/07/168869280774795483.html
+
+
+/news
+    /2023
+        /07
+            /07
+                /timestamp .html 
+
+/news/:year/:month/:date/:slug.html

@@ -1,0 +1,6 @@
+frontend/node_modules
+api/.DS_Store
+api/public/.DS_Store
+api/src/.DS_Store
+frontend/.DS_Store
+node-test/.DS_Store

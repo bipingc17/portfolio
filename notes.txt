@@ -143,3 +143,84 @@ Line no 141 changed from codes/mern-20
 Example for pull request
 
 
+
+View 
+    - Client Side Scripts 
+        - Js, Html, Css
+
+        
+    web 
+        - API 
+    
+jquery, react, angular, vue
+
+SPA 
+    Single Page Application 
+        - Single file
+
+index file 
+    index.html
+        => html (hyper text markup language)
+            - Builing block of a web app/website
+        ==> Css 
+            - cascading style sheet
+        ==> Js 
+            - React js(validation, asynchronous, animation)
+            
+
+Devices 
+    - SmartWatch            => Extra Small Devices -      < 576px
+    - mobile phones         => small Devices  sm          >= 576px ~ 768px
+    - Tablet PC             => Medium Devices md          >= 768px ~ 991px
+    - Laptop Screens        => Large Devices  lg          >= 992px ~ 1199px
+    - Desktop Screens       => Extra Large    xl          >= 1200px ~ 1399px 
+    - Boards, 4kdisplay     => Extra extra Large xxl        >= 1400px
+        Retina display  
+
+div => id, class
+    =>  smartwatch  => 100%
+        mobile      => 100% 
+        table       => 50% 
+        Laptop      => 50%
+        Desktop     => 25% 
+        large       => 25%
+
+    @media(min-width: 575){
+        .class{
+            width: 100%
+        }
+    }
+    @media(min-width: 768px && max-width: 991px){
+        .class{
+            width: 50%
+        }
+    }
+
+
+SPA 
+    ===> index.html 
+Page 
+    <body>  
+        <div id="id"></div>
+
+        scritp ===> React App => container load 
+    </body>
+
+    index.html 
+        => index.js 
+            => compile (babel, vite) => html/Css
+                -> load in index.html
+
+
+Nodejs 
+
+npm i package 
+
+yarn add pkgname
+yarn pkgname
+
+npm install 
+yarn 
+
+npm start 
+yarn run <cmd>
