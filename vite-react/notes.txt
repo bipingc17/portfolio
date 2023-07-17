@@ -32,3 +32,20 @@ https://ekantipur.com
                 /timestamp .html 
 
 /news/:year/:month/:date/:slug.html
+
+
+API call FE 
+    =====> XMLHttpRequest (XHR request)
+    =====> jQuery => ajax 
+    =====> js   => fetch
+    =====> axios/xhr request 
+
+    API-API 
+        superagent
+    Client-API
+        axios 
+        fetch 
+        XMLHttpRequest
+
+    API-Client 
+        - socket io

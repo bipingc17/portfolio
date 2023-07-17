@@ -9,11 +9,15 @@ import AdminDashboard from "../pages/admin/dasboard.page";
 
 import LoginPage from "../pages/auth/login.page";
 import RegisterPage from "../pages/auth/register.page";
+import CheckPermission from "./rbac.config";
+import { ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 const Routing = () => {
     // url http://localhost:5173/category/sub-category/sub-cat-2 => 2048
     
     return (<>
+        <ToastContainer />
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={<HomePageLayout />}>
@@ -35,7 +39,7 @@ const Routing = () => {
                     
                 </Route>
 
-                <Route path="/admin" element={<AdminLayout />}>
+                <Route path="/admin" element={<CheckPermission accessBy="admin" Component={<AdminLayout />} />}>
                     <Route index element={<AdminDashboard />} />
                     
                     <Route path="banner" element={<><Outlet /></>}>
@@ -44,6 +48,13 @@ const Routing = () => {
                         <Route path="edit/:id" element={<>Edit Form</>}/>
                     </Route>
                     
+                </Route>
+
+                <Route path="/seller" element={<>Seller Layout</>}>
+                    {/* Seller Routes */}
+                </Route>
+                <Route path="/customer" element={<>Customer Layout</>}>
+                    {/* Customer Routes */}
                 </Route>
             </Routes>
         </BrowserRouter>

@@ -3,6 +3,7 @@ import "./adminLayout.css";
 import { AdminFooter, AdminSidebar, AdminTopNav } from "../admin/component";
 
 const AdminLayout = () => {
+  // code 
   return (
     <>
       <AdminTopNav />
