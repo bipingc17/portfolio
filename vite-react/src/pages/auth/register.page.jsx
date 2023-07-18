@@ -5,7 +5,15 @@ import { useFormik } from "formik";
 import { EmailInput, TextInput } from "../../components/form.components";
 import * as Yup from "yup"
 import axios from "axios";
+import AuthService from "./auth.service";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+
 const RegisterPage = () => {
+	const navigate = useNavigate()
+	let [loading, setLoading] = useState(false);
+
     const registerSchema = Yup.object({
         name: Yup.string().min(3).required("Name is required"),
         email: Yup.string().email().required(), 
@@ -24,20 +32,31 @@ const RegisterPage = () => {
             image: null
         },
         validationSchema: registerSchema,
-        onSubmit: (values) => {
-            
-            console.log("Registraion: " , values)
-            // let formData = new FormData()
-            // // data bind 
-            // // object 
-            // formData.append('image', values.image, values.image.name)
-            // formData.append('name', values.name)
-            // formData.append('role', values.role)
-            // formData.append('email', values.email)
-            // formData.append('password', values.password)
-            
-            console.log(formData)
-            // send => formData
+        onSubmit: async (values) => {
+			setLoading(true);
+            try{
+				
+				let formData = new FormData();
+				const authSvc = new AuthService();
+
+				// file append
+				formData.append("image", values.image, values.image.filename)
+
+				// text data 
+				formData.append('name', values.name)
+				formData.append('email', values.email)
+				formData.append('role', values.role)
+				formData.append('password', values.password)
+
+				let response = await authSvc.register(formData)
+				if(response.status){
+					toast.success("Your account has been registered. Please Check your email for activation Process!")
+					setLoading(false)
+					navigate("/")
+				}
+			} catch(error){
+				console.log(error)
+			}
         }
     })
   return (
@@ -166,7 +185,7 @@ const RegisterPage = () => {
                         <Button variant="danger" type="reset" className="me-3" size="sm">
                             <FaTrash /> Cancel
                         </Button>
-                        <Button variant="success" type="submit" className="me-3" size="sm">
+                        <Button disabled={loading} variant="success" type="submit" className="me-3" size="sm">
                             <FaPaperPlane /> Register
                         </Button>
                     </Col>

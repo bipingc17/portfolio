@@ -7,9 +7,11 @@ import { EmailInput } from "../../components/form.components";
 import { toast } from "react-toastify";
 import axios from "axios";
 import axiosInstance from "../../config/axios.config";
+import AuthService from "./auth.service";
 
 
 const LoginPage = () => {
+    const authSvc = new AuthService();
     const loginSchema = Yup.object({
         email: Yup.string().email().required(),
         password: Yup.string().min(8).required(),
@@ -26,13 +28,8 @@ const LoginPage = () => {
         validationSchema: loginSchema,
         onSubmit: async (values) => {
             try{
-              // url => http://localhost:3005/
-              //path => login => /api/v1/auth/login, post, payload 
-              //path => register => /api/v1/auth/register
-              let response = await axiosInstance.post(
-                  '/v1/auth/login', 
-                  values
-                  )
+                let response = await authSvc.login(values);
+
                 console.log(response)
             } catch(axiosErrorResponse){
               toast.error(axiosErrorResponse.data.msg)
