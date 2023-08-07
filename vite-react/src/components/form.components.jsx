@@ -1,13 +1,16 @@
 import { Form, Col } from "react-bootstrap";
-export const TextInput = ({label="Name", name,changeEvent, required=true, placeholder="Enter your name...", error=null}) => {
+export const TextInput = ({label="Name", labelIcon=null, type="text", name,changeEvent, required=true, placeholder="Enter your name...", error=null}) => {
 
   return (
     <>
       <Form.Group className="row mb-3">
-        <Form.Label className="col-sm-3">{label}: </Form.Label>
+        <Form.Label className="col-sm-3">
+          {labelIcon ? labelIcon : ""}
+          {label}: 
+        </Form.Label>
         <Col sm={9}>
           <Form.Control
-            type="text"
+            type={type}
             name={name}
             onChange={changeEvent}
             required={required}

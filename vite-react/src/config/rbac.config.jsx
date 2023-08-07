@@ -1,19 +1,43 @@
+import { useEffect, useState } from "react";
 import { Navigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { Auth } from "../pages/auth";
 
 const CheckPermission = ({Component, accessBy}) => {
+    let [userInfo, setUserInfo] = useState();
+    let [loading, setLoading] = useState(true);
+    let [error, setError] = useState(false);
     
-    let userDetail = {
-        role: "admin"
+    const getLoggedInUser = async() => {
+        try {
+            let user = await Auth.authSvc.getLoggedInUser();
+            setUserInfo(user.result);
+        } catch(exception){
+            // exception
+            toast.error("Could not process your request at this moment.")
+            setError(true)
+        } finally{
+            setLoading(false)
+        }
     }
-    // loggedin user role 
-    // navigate
 
-    if(userDetail.role === accessBy){
-        return Component
+    useEffect(() => {
+        // get logged in user
+        getLoggedInUser()
+    }, [])
+
+
+    if(error){
+        return <>Error Loading Content...</>
     } else {
-        toast.warning("You do not have previlege to access "+accessBy+" panel!")
-        return <Navigate to={"/"+userDetail.role} />
+        if(loading) {
+            return <>Loading...</>
+        } else if(!loading && userInfo && userInfo.role === accessBy) {
+            return Component
+        } else {
+            toast.warning("You do not have permission to access this!!")
+            return <Navigate to={"/"+userInfo.role} />
+        }
     }
 }
 export default CheckPermission;

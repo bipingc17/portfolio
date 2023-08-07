@@ -49,3 +49,51 @@ API call FE
 
     API-Client 
         - socket io
+
+
+
+BE 
+    - API => Repl 
+
+
+FE 
+
+develop 
+    ======> git Repo Push 
+                ====> branch 
+                    - develop
+                        - nightly (CI/CD)   ====> dev server (QA, PM, Devs)
+                ===> Staging 
+                        - staging (CI/CD)   ====> Staging server (QA, PM, Devs, Client)
+                ===> production 
+                        - prod main/master       ====> Public release
+
+                        ====> development Server / nightly
+
+
+cookie 
+    - domain dependent
+    - 50 cookies
+    - path dependent
+        e.g. /admin => 
+            / 
+    - per cookie 4096 chars 
+    - on maturity gets deleted 
+    - document.cookie = "name=value;value=data;expiresIn=UAT"
+
+localstorage
+    - domain dependent
+    - no limitiation on no of items
+    - not path dependent
+    - no limit on the item but max of 5mb per domain
+    - non-volatile data 
+    
+    - localStorage.setItem(key, value)
+    - localStorage.getItem(key)
+    - localStorage.removeItem(key)
+    - localStorage.clear()
+
+
+Only string 
+
+localStorage        sessionStorage

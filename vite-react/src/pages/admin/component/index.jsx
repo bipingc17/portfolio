@@ -1,12 +1,23 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import noUser from "../../../assets/images/no-user.png";
 import { UserImage } from "../../../components/image.components";
+import { toast } from "react-toastify";
 
 export const AdminTopNav = () => {
   const toggleSidebar = (e) => {
     e.preventDefault();
     document.body.classList.toggle("sb-sidenav-toggled");
   };
+  const navigate = useNavigate();
+
+  const logout = (e) => {
+    e.preventDefault()
+    localStorage.removeItem("accessToken")
+    localStorage.removeItem("refreshtoken")
+    localStorage.removeItem("user")
+    toast.success("Thankyou for using our system!!")
+    navigate("/login")
+  }
   return (
     <>
       <nav className="sb-topnav navbar navbar-expand navbar-dark bg-dark fixed-top">
@@ -50,9 +61,9 @@ export const AdminTopNav = () => {
                 <hr className="dropdown-divider" />
               </li>
               <li>
-                <a className="dropdown-item" href="#!">
+                <NavLink onClick={logout} className="dropdown-item" to="/login">
                   Logout
-                </a>
+                </NavLink>
               </li>
             </ul>
           </li>
@@ -106,12 +117,12 @@ export const AdminSidebar = () => {
                 data-bs-parent="#sidenavAccordion"
               >
                 <nav className="sb-sidenav-menu-nested nav">
-                  <a className="nav-link" href="layout-static.html">
+                  <NavLink className="nav-link" to="/admin/banner/create">
                     Add Banner
-                  </a>
-                  <a className="nav-link" href="layout-sidenav-light.html">
+                  </NavLink>
+                  <NavLink className="nav-link" to="/admin/banner">
                     List Banner
-                  </a>
+                  </NavLink>
                 </nav>
               </div>
 

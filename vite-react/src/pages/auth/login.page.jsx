@@ -30,7 +30,24 @@ const LoginPage = () => {
             try{
                 let response = await authSvc.login(values);
 
-                console.log(response)
+                if(response.status){
+                  // web 
+                  let formattedData = {
+                    id: response.result.data._id,
+                    name: response.result.data.name,
+                    email: response.result.data.email,
+                    role: response.result.data.role
+                  }
+                  localStorage.setItem("accessToken", response.result.token.accessToken)
+                  localStorage.setItem("refreshtoken", response.result.token.refreshToken)
+                  localStorage.setItem("user", JSON.stringify(formattedData))
+                  
+                  toast.success("Welcome to "+formattedData.role+" Panel!")
+                  navigate("/"+formattedData.role)
+                  
+                } else {
+                    toast.error(response.msg)
+                }
             } catch(axiosErrorResponse){
               toast.error(axiosErrorResponse.data.msg)
               console.log(axiosErrorResponse)

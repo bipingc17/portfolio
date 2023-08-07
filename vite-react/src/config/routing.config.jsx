@@ -7,11 +7,15 @@ import HomePageLayout from "../pages/layouts/home.layout";
 import AdminLayout from "../pages/layouts/admin.layout";
 import AdminDashboard from "../pages/admin/dasboard.page";
 
+import ActivateUser from "../pages/auth/activate-user.page";
 import LoginPage from "../pages/auth/login.page";
 import RegisterPage from "../pages/auth/register.page";
 import CheckPermission from "./rbac.config";
 import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+
+
+import Banner from "../pages/admin/banner";
 
 const Routing = () => {
     // url http://localhost:5173/category/sub-category/sub-cat-2 => 2048
@@ -32,6 +36,7 @@ const Routing = () => {
                     
                     <Route path="login" element={<LoginPage />} />
                     <Route path="register" element={<RegisterPage />} />
+                    <Route path="/activate/:token" element={<ActivateUser />} />
                     <Route path="forget-password" element={<LoginPage />} />
                     <Route path="set-password/:token" element={<LoginPage />} />
                     
@@ -43,17 +48,17 @@ const Routing = () => {
                     <Route index element={<AdminDashboard />} />
                     
                     <Route path="banner" element={<><Outlet /></>}>
-                        <Route index element={<>List</>}/>
-                        <Route path="create" element={<>Form</>}/>
+                        <Route index element={<Banner.BannerListPage />}/>
+                        <Route path="create" element={<Banner.BannerCreateForm />}/>
                         <Route path="edit/:id" element={<>Edit Form</>}/>
                     </Route>
                     
                 </Route>
 
-                <Route path="/seller" element={<>Seller Layout</>}>
+                <Route path="/seller" element={<CheckPermission Component={<>Seller Layout</>} accessBy={"seller"} />}>
                     {/* Seller Routes */}
                 </Route>
-                <Route path="/customer" element={<>Customer Layout</>}>
+                <Route path="/customer" element={<CheckPermission Component={<>Customer Layout</>} accessBy={"customer"} />}>
                     {/* Customer Routes */}
                 </Route>
             </Routes>
